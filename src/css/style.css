@@ -1,0 +1,18 @@
+*{margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Teachers",sans-serif;  
+}
+body{
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+    min-height: 100vh;
+}
+.card{
+    height: 100%;
+    transform: all ease 1s;
+    border-radius: 1rem;
+}
+.card:hover{
+    transform: scale(1.03);
+    box-shadow: 20px 20px 60px #bebebe,-20px -20px 60px #ffffff;
+}
