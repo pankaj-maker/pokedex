@@ -5,6 +5,15 @@ import "../scss/style.scss";
 import data from "./data.json";
 import PokemonCard from "./components/PokemonCard";
 
+interface Pokemon {
+  id: number;
+  name: string;
+  image: string;
+  description: string;
+  link: string;
+  abilities: string[];
+}
+
 // === DOM Targeting ===
 const inputEl = document.querySelector(
   'input[type="text"]'
@@ -14,7 +23,7 @@ const dataRow = document.querySelector("[data-row]") as HTMLDivElement;
 renderPokemon(shuffle(data));
 
 // Give list, it will render them
-function renderPokemon(list: object[]): void {
+function renderPokemon(list: Pokemon[]): void {
   dataRow.textContent = "";
 
   if (!list.length) {
@@ -40,11 +49,11 @@ function handleSearch(input: string): void {
   //   return pokemonObj.name.toLowerCase().includes(input);
   // });
 
-  let debounceTimer:ReturnType<typeof setTimeout>;
+  let debounceTimer: ReturnType<typeof setTimeout>;
   inputEl.addEventListener("input", (e) => {
     clearTimeout(debounceTimer);
 
-    const target=e.target as HTMLInputElement
+    const target = e.target as HTMLInputElement;
     debounceTimer = setTimeout(() => {
       const currentInput = target.value.trim().toLowerCase();
       handleSearch(currentInput);
@@ -59,7 +68,7 @@ function handleSearch(input: string): void {
   const fuse = new Fuse(data, options);
 
   // Perform search
-  function performSearch(): object[] {
+  function performSearch(): Pokemon[] {
     if (!input) return data;
 
     const searched = fuse.search(input);
@@ -72,12 +81,13 @@ function handleSearch(input: string): void {
 }
 
 inputEl.addEventListener("input", (e) => {
-  const currentInput = e.target.value.trim().toLowerCase();
+  const target = e.target as HTMLInputElement;
+  const currentInput = target.value.trim().toLowerCase();
   handleSearch(currentInput);
 });
 
 // Add / to active search
-document.addEventListener("keydown", (e:KeyboardEvent) => {
+document.addEventListener("keydown", (e: KeyboardEvent) => {
   if (e.key === "/") {
     // Don't type
     e.preventDefault();
