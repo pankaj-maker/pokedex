@@ -1,8 +1,8 @@
 // Packages
 import shuffle from "array-shuffle";
 import Fuse from "fuse.js";
-
-import data from "./data";
+import "../scss/style.scss";
+import data from "./data.json";
 import PokemonCard from "./components/PokemonCard";
 
 // === DOM Targeting ===
