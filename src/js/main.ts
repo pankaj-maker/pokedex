@@ -6,21 +6,27 @@ import data from "./data.json";
 import PokemonCard from "./components/PokemonCard";
 
 // === DOM Targeting ===
-const inputEl = document.querySelector('input[type="text"]');
-const dataRow = document.querySelector("[data-row]");
+const inputEl = document.querySelector(
+  'input[type="text"]'
+) as HTMLInputElement;
+const dataRow = document.querySelector("[data-row]") as HTMLDivElement;
 
 renderPokemon(shuffle(data));
 
 // Give list, it will render them
-function renderPokemon(list) {
+function renderPokemon(list: object[]): void {
   dataRow.textContent = "";
 
-  if(!list.length){
-  const pokemon=PokemonCard({
-    image:"https://upload.wikimedia.org/wikipedia/en/e/e4/Ash_Ketchum_Journeys.png?20240410031759",name:"Not found",link:"https://pokedex.com",description:"Try another search"
-  });
-  dataRow.appendChild(pokemon);
-}
+  if (!list.length) {
+    const pokemon = PokemonCard({
+      image:
+        "https://upload.wikimedia.org/wikipedia/en/e/e4/Ash_Ketchum_Journeys.png?20240410031759",
+      name: "Not found",
+      link: "https://pokedex.com",
+      description: "Try another search",
+    });
+    dataRow.appendChild(pokemon);
+  }
 
   list.forEach((pokemonObj) => {
     const pokemon = PokemonCard(pokemonObj);
@@ -29,20 +35,21 @@ function renderPokemon(list) {
 }
 
 // Will be invoked on search
-function handleSearch(input) {
+function handleSearch(input: string): void {
   // const filteredPokemon = data.filter((pokemonObj) => {
   //   return pokemonObj.name.toLowerCase().includes(input);
   // });
 
-  let debounceTimer;
-  inputEl.addEventListener("input",(e)=>{
+  let debounceTimer:ReturnType<typeof setTimeout>;
+  inputEl.addEventListener("input", (e) => {
     clearTimeout(debounceTimer);
-    debounceTimer=setTimeout(()=>{
-const currentInput=e.target.value.trim().toLowerCase();
-    handleSearch(currentInput);
 
-  },500);
-});
+    const target=e.target as HTMLInputElement
+    debounceTimer = setTimeout(() => {
+      const currentInput = target.value.trim().toLowerCase();
+      handleSearch(currentInput);
+    }, 500);
+  });
 
   // Create fuse object
   const options = {
@@ -52,7 +59,7 @@ const currentInput=e.target.value.trim().toLowerCase();
   const fuse = new Fuse(data, options);
 
   // Perform search
-  function performSearch() {
+  function performSearch(): object[] {
     if (!input) return data;
 
     const searched = fuse.search(input);
@@ -70,7 +77,7 @@ inputEl.addEventListener("input", (e) => {
 });
 
 // Add / to active search
-document.addEventListener("keydown", (e) => {
+document.addEventListener("keydown", (e:KeyboardEvent) => {
   if (e.key === "/") {
     // Don't type
     e.preventDefault();
