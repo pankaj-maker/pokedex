@@ -4,15 +4,7 @@ import Fuse from "fuse.js";
 import "../scss/style.scss";
 import data from "./data.json";
 import PokemonCard from "./components/PokemonCard";
-
-interface Pokemon {
-  id: number;
-  name: string;
-  image: string;
-  description: string;
-  link: string;
-  abilities: string[];
-}
+import { Pokemon } from "./interface/Pokemon";
 
 // === DOM Targeting ===
 const inputEl = document.querySelector(
@@ -36,7 +28,7 @@ function renderPokemon(list: Pokemon[]): void {
     });
     dataRow.appendChild(pokemon);
   }
-  const fragment= document.createDocumentFragment():;
+  const fragment= document.createDocumentFragment();
 
   list.forEach((pokemonObj) => {
     const pokemon = PokemonCard(pokemonObj);
@@ -89,7 +81,7 @@ inputEl.addEventListener("input", (e) => {
 });
 
 // Add / to active search
-document.addEventListener("keydown", (e: KeyboardEvent) => {
+document.addEventListener("keyup", (e: KeyboardEvent) => {
   if (e.key === "/") {
     // Don't type
     e.preventDefault();
