@@ -1,7 +1,7 @@
 # pokedex
 A webapp that renders pokemons coming from `data.json`
 # preview
-![img alt](https://github.com/pankaj-maker/pokedex/blob/8086006010c06cfebbddc89c561cda185156b449/pokemon-landscape.png)
+![img alt](https://github.com/pankaj-maker/pokedex/blob/5d18eb5721cdc3777e83bc1d3cfd8affd47982c7/pokemon-landscape.png)
 
 
 # features
