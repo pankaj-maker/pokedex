@@ -9,4 +9,4 @@ A webapp that renders pokemons coming from `data.json`
 --**Build Optimization**:Code and file compression using Parcel's built-in deploy build
 --**Better Ux**:Random suffling of pokemon on every render .Implemented using [`array-shuffle`](htps://www.npmjs.com/package/array-shuffle)
 --**Accesability**:Using /(_slash_) to activate the input feild and using tabs to nevigate the cards 
-![image alt](https://github.com/pankaj-maker/pokedex/blob/b1cdef96839d9ee76652948ff76da982f0046a28/pokemon-landscape.png)
+
