@@ -1,5 +1,7 @@
 # pokedex
 A webapp that renders pokemons coming from `data.json`
+# preview
+
 
 ##features
 
