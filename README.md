@@ -1,10 +1,10 @@
 # pokedex
 A webapp that renders pokemons coming from `data.json`
 # preview
-![img alt]()
+![img alt](https://github.com/pankaj-maker/pokedex/blob/aae9788e9ea732b25b585806caf0135b6c892b96/pokemon.png)
 
 
-##features
+# features
 
 --**Fuzzy search**:filters out pokemon on close search match.implementes using [`fuse.js`](https://www.fusejs.io/)
 --**typesafety**:implemented types for robust code adding `Interface` for custom types.
